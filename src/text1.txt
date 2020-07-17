@@ -1,0 +1,10 @@
+hello world
+hello go
+hello c
+hello
+hello c++
+hello c
+hello java
+hello go
+hello python
+hello python
