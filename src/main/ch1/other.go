@@ -14,6 +14,8 @@ func main() {
 		fmt.Println("into default")
 
 	}
+
+	fmt.Println("hello mac")
 }
 
 func test() int {
