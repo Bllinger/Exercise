@@ -10,5 +10,6 @@ func main() {
 
 	fmt.Println(c.String())
 	fmt.Println("Celsius of Boiling:", tempconv.BoilingC)
-	fmt.Println("Fahrenheit of AbsoluteZero", tempconv.CToF(tempconv.AbsoluteZeroC))
+	fmt.Println("Fahrenheit of AbsoluteZero:", tempconv.CToF(tempconv.AbsoluteZeroC))
+	fmt.Println("Kelvins of Zero:", tempconv.KtoC(tempconv.ZeroK))
 }

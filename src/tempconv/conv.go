@@ -7,3 +7,6 @@ func CToF(c Celsius) Fahrenheit {
 func FToC(f Fahrenheit) Celsius {
 	return Celsius((f - 32) * 5 / 9)
 }
+func KtoC(k Kelvins) Celsius {
+	return Celsius(k - 271.15)
+}
