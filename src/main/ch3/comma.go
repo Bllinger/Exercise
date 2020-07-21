@@ -17,7 +17,6 @@ func comma1(s string) string {
 	buf.WriteString("," + s[l-3:])
 
 	for l -= 3; (l - 3) > 0; l -= 3 {
-		ec
 		temp := buf.String()
 		buf.Reset()
 		buf.WriteString("," + s[l-3:l] + temp)
