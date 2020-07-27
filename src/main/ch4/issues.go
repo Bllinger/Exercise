@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"main/github"
 	"os"
 	"time"
 )
@@ -9,20 +10,20 @@ import (
 func main() {
 	var during = -1
 
-	result, err := SearchIssues(os.Args[1:])
+	result, err := github.SearchIssues(os.Args[1:])
 	if err != nil {
 		fmt.Fprint(os.Stderr, err)
 	}
 
 	for during != 0 {
-		fmt.Println("请输入数字选择查看多久的issue:")
+		fmt.Println("请输入数字，选择查看多久的issue:")
 		fmt.Println("1:一个月以内")
 		fmt.Println("2:一年以内")
 		fmt.Println("3:超过一年")
 		fmt.Println("0:退出")
 		fmt.Scanln(&during)
 
-		issues := []Issue{*result.Items[0]}
+		var issues []*github.Issue
 
 		total, i := 0, 0
 
@@ -30,7 +31,7 @@ func main() {
 		case 1:
 			for _, item := range result.Items {
 				if daysAgo(item.CreatedAt) <= 30 {
-					issues = append(issues, *item)
+					issues = append(issues, item)
 					total++
 					i++
 				}
@@ -38,7 +39,7 @@ func main() {
 		case 2:
 			for _, item := range result.Items {
 				if daysAgo(item.CreatedAt) <= 365 {
-					issues = append(issues, *item)
+					issues = append(issues, item)
 					total++
 					i++
 				}
@@ -46,17 +47,22 @@ func main() {
 		case 3:
 			for _, item := range result.Items {
 				if daysAgo(item.CreatedAt) > 365 {
-					issues = append(issues, *item)
+					issues = append(issues, item)
 					total++
 					i++
 				}
 			}
+		case 0:
+			fmt.Println("程序结束")
+			return
+
 		default:
 			fmt.Println("输入错误！！！")
+			continue
 		}
 
-		var items = IssuesSearchResult{TotalCount: total, Items: nil}
-		items.Items = &issues
+		items := new(github.IssuesSearchResult)
+		*items = github.IssuesSearchResult{TotalCount: total, Items: issues}
 
 		fmt.Printf("Total issue is: %d\n", items.TotalCount)
 
