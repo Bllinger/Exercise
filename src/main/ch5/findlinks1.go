@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 	"io"
 	"net/http"
 	"os"
@@ -11,7 +10,6 @@ import (
 
 func main() {
 	fetch()
-
 }
 
 func fetch() {
