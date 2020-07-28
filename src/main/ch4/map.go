@@ -14,6 +14,7 @@ func main() {
 
 	fmt.Println(m1)
 	fmt.Println(m2)
+
 }
 
 func alter1(m map[string]int, tag string, num int) {

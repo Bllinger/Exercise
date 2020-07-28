@@ -15,4 +15,9 @@ func main() {
 	fmt.Println(num)
 
 	fmt.Println(s1[:5])
+
+	var s2 []int
+	fmt.Println(s2 == nil)
+	s3 := []int{}
+	fmt.Println(s3 == nil)
 }
